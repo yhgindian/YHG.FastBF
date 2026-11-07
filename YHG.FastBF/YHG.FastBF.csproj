@@ -1,0 +1,30 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+
+		<!-- NuGet Package Metadata -->
+		<PackageId>YHG.FastBF</PackageId>
+		<Version>1.0.0</Version>
+		<Authors>Naveen Ojha</Authors>
+		<Company>YHGIndian</Company>
+		<Title>YHG.FastBF - High-Performance Binary Serializer</Title>
+		<Description>A fast, lightweight, and modern binary serialization and buffer deserialization alternative to the deprecated .NET BinaryFormatter, implementing the MS-NRBF specification.</Description>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<PackageProjectUrl>https://tools.yhgindian.com</PackageProjectUrl>
+		<RepositoryUrl>https://github.com/yhgindian/YHG.FastBF</RepositoryUrl>
+		<RepositoryType>git</RepositoryType>
+		<PackageTags>binary;serialization;binaryformatter;nrbf;buffer;deserializer</PackageTags>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<None Include="README.md" Pack="true" PackagePath="\" Condition="Exists('README.md')" />
+		<None Include="LICENSE.txt" Pack="true" PackagePath="\" Condition="Exists('LICENSE.txt')" />
+	</ItemGroup>
+
+</Project>
