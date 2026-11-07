@@ -1,5 +1,4 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
 	<PropertyGroup>
 		<TargetFramework>net8.0</TargetFramework>
 		<ImplicitUsings>enable</ImplicitUsings>
@@ -8,7 +7,7 @@
 
 		<!-- NuGet Package Metadata -->
 		<PackageId>YHG.FastBF</PackageId>
-		<Version>1.0.0</Version>
+		<Version>1.0.1</Version>
 		<Authors>Naveen Ojha</Authors>
 		<Company>YHGIndian</Company>
 		<Title>YHG.FastBF - High-Performance Binary Serializer</Title>
@@ -19,12 +18,11 @@
 		<RepositoryType>git</RepositoryType>
 		<PackageTags>binary;serialization;binaryformatter;nrbf;buffer;deserializer</PackageTags>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
-		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 	</PropertyGroup>
 
 	<ItemGroup>
-		<None Include="README.md" Pack="true" PackagePath="\" Condition="Exists('README.md')" />
-		<None Include="LICENSE.txt" Pack="true" PackagePath="\" Condition="Exists('LICENSE.txt')" />
+		<!-- Solution root se file pick karke package root me place karein -->
+		<None Include="..\README.md" Pack="true" PackagePath="\" Condition="Exists('..\README.md')" />
+		<None Include="..\LICENSE.txt" Pack="true" PackagePath="\" Condition="Exists('..\LICENSE.txt')" />
 	</ItemGroup>
-
 </Project>

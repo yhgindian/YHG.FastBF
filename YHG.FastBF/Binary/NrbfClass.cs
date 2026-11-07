@@ -10,6 +10,8 @@ namespace YHG.FastBF.Binary
         public string[] MemberNames { get; internal set; } = Array.Empty<string>();
         public object?[] Values { get; internal set; } = Array.Empty<object?>();
 
+        public object? this[string name] => Get(name);
+
         public int IndexOf(string name)
         {
             for (int i = 0; i < MemberNames.Length; i++)
@@ -34,6 +36,35 @@ namespace YHG.FastBF.Binary
         {
             int i = IndexOf(name);
             return i < 0 ? null : Values[i];
+        }
+
+        public string GetString(string name, string fallback = "") =>
+            Get(name)?.ToString() ?? fallback;
+
+        public int GetInt32(string name, int fallback = 0) =>
+            Get(name) != null ? ToInt(Get(name)!) : fallback;
+
+        public long GetInt64(string name, long fallback = 0) =>
+            Get(name) is long l ? l : (Get(name) != null ? ToInt(Get(name)!) : fallback);
+
+        public float GetSingle(string name, float fallback = 0f) =>
+            Get(name) != null ? ToFloat(Get(name)!) : fallback;
+
+        public double GetDouble(string name, double fallback = 0.0) =>
+            Get(name) is double d ? d : (Get(name) != null ? ToFloat(Get(name)!) : fallback);
+
+        public bool GetBoolean(string name, bool fallback = false) =>
+            Get(name) != null ? ToBool(Get(name)!) : fallback;
+
+        public T? GetClass<T>(string name) where T : class, IBfReadable, new()
+        {
+            if (Get(name) is NrbfClass subClass)
+            {
+                var inst = new T();
+                inst.ReadBf(subClass);
+                return inst;
+            }
+            return null;
         }
 
         public static int ToInt(object? v) => v switch
